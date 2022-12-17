@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC '-//Sun Microsystems, Inc.//DTD Web
+     Application 2.3//EN' 'http://java.sun.com/dtd/web-app_2_3.dtd'>
+
+<web-app>
+
+    <servlet>
+        <servlet-name>lesson23_car</servlet-name>
+        <servlet-class>org.example.CarsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>lesson23_book</servlet-name>
+        <servlet-class>org.example.BookServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>lesson23_car</servlet-name>
+        <url-pattern>/car</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>lesson23_book</servlet-name>
+        <url-pattern>/book</url-pattern>
+    </servlet-mapping>
+
+</web-app>
