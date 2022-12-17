@@ -5,22 +5,22 @@
 <web-app>
 
     <servlet>
-        <servlet-name>lesson22_car</servlet-name>
+        <servlet-name>lesson23_car</servlet-name>
         <servlet-class>org.example.CarsServlet</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>lesson22_book</servlet-name>
+        <servlet-name>lesson23_book</servlet-name>
         <servlet-class>org.example.BookServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>lesson22_car</servlet-name>
+        <servlet-name>lesson23_car</servlet-name>
         <url-pattern>/car</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>lesson22_book</servlet-name>
+        <servlet-name>lesson23_book</servlet-name>
         <url-pattern>/book</url-pattern>
     </servlet-mapping>
 
