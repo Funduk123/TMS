@@ -42,8 +42,9 @@ public class CarsServlet extends HttpServlet {
 
         if (id == null) {
             resp.getOutputStream().println("CARS INFO");
-            for (Map.Entry<String, String> entry : cars.entrySet())
-                resp.getOutputStream().println("Car " + entry.getKey() + ": " + entry.getValue());
+            for (String car : cars.keySet()) {
+                resp.getOutputStream().println("Car " + car + ": " + cars.get(car));
+            }
             resp.getOutputStream().println("_________________________________");
             resp.getOutputStream().println("Cars: " + cars.size());
         } else {

@@ -18,14 +18,19 @@ public class LogFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String method = ((HttpServletRequest) request).getMethod();
 
-        if (!"GET".equalsIgnoreCase(method)) {
-            System.out.println(((HttpServletRequest) request).getRequestURI());
+        String method = ((HttpServletRequest) request).getMethod();
+        String header = ((HttpServletRequest) request).getHeader("Parameter");
+
+        if ("GET".equalsIgnoreCase(method)) {
+            chain.doFilter(request, response);
         }
 
-        chain.doFilter(request, response);
-
+        if (header == null) {
+            throw new ServletException("Enter parameter");
+        } else {
+            chain.doFilter(request, response);
+        }
     }
 
     @Override
