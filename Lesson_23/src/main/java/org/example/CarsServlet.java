@@ -15,14 +15,11 @@ public class CarsServlet extends HttpServlet {
 
     private static final Map<String, String> cars = new HashMap<>();
 
-    static {
-        cars.put("1", "brand: BMW" + ", model: E34");
-        cars.put("2", "brand: Audi" + ", model: A6");
-    }
-
     @Override
     public void init(ServletConfig config) {
         System.out.println("---DO INIT---");
+        cars.put("1", "brand: BMW" + ", model: E34");
+        cars.put("2", "brand: Audi" + ", model: A6");
     }
 
     @Override
