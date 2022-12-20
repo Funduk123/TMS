@@ -1,4 +1,7 @@
 package org.example;
+
+import org.example.model.Car;
+import org.example.model.User;
 import org.example.service.CarsList;
 
 import javax.servlet.*;
@@ -33,50 +36,33 @@ public class CarsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        System.out.println("мда");
+
         String id = req.getParameter("id");
 
         if (id == null) {
             resp.getOutputStream().println(carsList.getCarsList().toString());
+        } else {
+            Car car = carsList.getCar(Long.parseLong(id));
+            resp.getOutputStream().println(car.toString());
         }
 
+        User user = new User("Danila", "123");
+        req.setAttribute("register", user.login + " " + user.password);
+        req.getRequestDispatcher("car.jsp");
 
-
-//        User user = new User("Danila", "123");
-//        req.setAttribute("register", user.login + " " + user.password);
-//        req.getRequestDispatcher("car.jsp");
-
-
-
-//        if (id == null) {
-//            resp.getOutputStream().println("CARS INFO");
-//            for (String car : cars.keySet()) {
-//                resp.getOutputStream().println("Car " + car + ": " + cars.get(car));
-//            }
-//            resp.getOutputStream().println("_________________________________");
-//            resp.getOutputStream().println("Cars: " + cars.size());
-//        } else {
-//            if (cars.containsKey(id)) {
-//                resp.getOutputStream().println("CARS INFO");
-//                resp.reset();
-//                resp.getOutputStream().println(cars.get(id));
-//            } else {
-//                req.getRequestDispatcher("/car.jsp").forward(req, resp);
-//            }
-//        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("---DO POST CARS LIST---");
 
         PrintWriter writer = resp.getWriter();
 
-        String id = req.getParameter("id");
+        long id = Long.parseLong(req.getParameter("id"));
         String brand = req.getParameter("brand");
-        String model = req.getParameter("org/example/model");
+        String model = req.getParameter("model");
+        carsList.addNewCar(id, brand, model);
 
-        writer.println("Car " + id + ": brand: " + brand + ", model: " + model);
+        System.out.println("все ок");
 
 //        cars.put(id, "brand: " + brand + ", model: " + model);
 

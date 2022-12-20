@@ -18,12 +18,19 @@ public class CarsList {
         return carsList;
     }
 
-    public Car addNewCar(long id, String brand, String model) {
+    public void addNewCar(long id, String brand, String model) {
         Car car = new Car(id, brand, model);
         carsList.add(car);
-        return car;
     }
 
+    public Car getCar(long id) {
 
+        for (Car car : carsList) {
+            if (car.getId() == id) {
+                return car;
+            }
+        }
+        return null;
+    }
 
 }
