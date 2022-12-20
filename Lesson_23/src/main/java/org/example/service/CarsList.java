@@ -18,9 +18,9 @@ public class CarsList {
         return carsList;
     }
 
-    public void addNewCar(long id, String brand, String model) {
-        Car car = new Car(id, brand, model);
+    public Car addNewCar(Car car) {
         carsList.add(car);
+        return car;
     }
 
     public Car getCar(long id) {
@@ -31,6 +31,19 @@ public class CarsList {
             }
         }
         return null;
+    }
+
+    public void deleteCar(long id) {
+        Car car = getCar(id);
+        carsList.remove(car);
+    }
+
+    public Car updateCar(Car car) {
+        Car newCar = getCar(car.getId());
+
+        newCar.setBrand(car.getBrand());
+        newCar.setModel(car.getModel());
+        return newCar;
     }
 
 }
