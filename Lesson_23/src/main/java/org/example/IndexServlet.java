@@ -22,10 +22,10 @@ public class IndexServlet extends HttpServlet {
         System.out.println(simpleDataFormat.format(date));
         resp.addCookie(new Cookie("Time", simpleDataFormat.format(date)));
 
-        String path = "/index.html";
-        ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
-        requestDispatcher.forward(req, resp);
+//        String path = "/index.html";
+//        ServletContext servletContext = getServletContext();
+//        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
+//        requestDispatcher.forward(req, resp);
 
     }
 }
