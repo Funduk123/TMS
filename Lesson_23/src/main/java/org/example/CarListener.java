@@ -1,25 +1,20 @@
 package org.example;
 
-import javax.servlet.ServletRequestAttributeEvent;
-import javax.servlet.ServletRequestAttributeListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+import java.io.PrintWriter;
 
 @WebListener
-public class CarListener implements ServletRequestAttributeListener {
+public class CarListener implements HttpSessionListener {
+
     @Override
-    public void attributeAdded(ServletRequestAttributeEvent srae) {
-        String name = srae.getName();
-        Object value = srae.getValue();
-        System.out.println("attribute was added: " + name + " " + value);
+    public void sessionCreated(HttpSessionEvent se) {
     }
 
     @Override
-    public void attributeRemoved(ServletRequestAttributeEvent srae) {
-
-    }
-
-    @Override
-    public void attributeReplaced(ServletRequestAttributeEvent srae) {
+    public void sessionDestroyed(HttpSessionEvent se) {
 
     }
 }
