@@ -11,10 +11,10 @@ public class CarListener implements HttpSessionListener {
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
+        System.out.println("Session created!!!");
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-
     }
 }
