@@ -1,4 +1,5 @@
 rootProject.name = 'TMS'
 include 'Lesson_22'
 include 'Lesson_23'
+include 'Lesson_24-25'
 
