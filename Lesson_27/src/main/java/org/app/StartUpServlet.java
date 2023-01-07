@@ -1,4 +1,4 @@
-package org.example;
+package org.app;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-@WebServlet("/init")
+@WebServlet(value = "/init", loadOnStartup = 1)
 public class StartUpServlet extends HttpServlet {
 
     @Override
@@ -17,17 +17,25 @@ public class StartUpServlet extends HttpServlet {
 
         try {
             Class.forName("org.postgresql.Driver");
+            getConnection().createStatement().execute("drop table if exists cars");
+            getConnection().createStatement().execute("create table cars" +
+                    "(" +
+                    " id int primary key, " +
+                    " brand varchar, " +
+                    " model varchar, " +
+                    " cost int" +
+                    ")"
+            );
         } catch (Exception exc) {
-            System.out.println(exc);
             throw new RuntimeException();
         }
     }
 
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cars");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/cars", "postgres", "admin");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException();
         }
     }
 }
